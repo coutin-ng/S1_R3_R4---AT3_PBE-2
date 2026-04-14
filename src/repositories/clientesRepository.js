@@ -106,10 +106,10 @@ const clienteRepository = {
     },
 
     selecionar: async () => {
-        const sql = `SELECT clientes.*, telefones.telefone, enderecos.*
+        const sql = `SELECT clientes.*, telefones.*, enderecos.*
          FROM clientes
-         LEFT JOIN telefones ON clientes.id = telefones.idCliente
-         LEFT JOIN enderecos ON clientes.id = enderecos.idCliente`;
+         INNER JOIN telefones ON clientes.id = telefones.idCliente
+         INNER JOIN enderecos ON clientes.id = enderecos.idCliente`;
 
         const [rows] = await connection.execute(sql);
 
